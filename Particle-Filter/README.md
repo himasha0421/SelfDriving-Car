@@ -50,6 +50,7 @@ In the update step we mainly focus on the weight update assigned to each and eve
 
 Step 01:
 As the car moves it takes measurements using sensors but all the sensor measurements are  in the vehicle coordinate system . For landmarker matching we need to transform from local to map coordinate frame . For that we use below equation 
+![](images/Screenshot%20from%202020-06-09%2017-16-06.png)
 
 Step 02:
 After transforming into the map coordinate frame we need to measure the most likely landmark from the map using neighbour search . Now each particle has it’s more likely measurements from the map .
@@ -59,7 +60,7 @@ After transforming into the map coordinate frame we need to measure the most lik
 Step 03:
 using multivariate gaussian we can measure the likelihood of the measurements for the particle . If the measurements and the likely landmarks  with low euclidean distance error then that particle is more likely to represent the object . Hence weight goes high . Below equation shows the weight updating equation :
 
-
+![](images/Screenshot%20from%202020-06-09%2017-17-32.png)
 
 
 ## Running the Code
