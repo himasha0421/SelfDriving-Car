@@ -1,12 +1,13 @@
+![](images/Screenshot%20from%202020-06-09%2017-14-00.png)
 ## Project Introduction
 Your robot has been kidnapped and transported to a new location! Luckily it has a map of this location, a (noisy) GPS estimate of its initial location, and lots of (noisy) sensor and control data.
 
 In this project you will implement a 2 dimensional particle filter in C++. Your particle filter will be given a map and some initial localization information (analogous to what a GPS would provide). At each time step your filter will also get observation and control data.
 
-﻿* Particle Filter
+## Particle Filter
 
 
-*  Filter initialization
+## Filter initialization
 
 
 First we need to define the initial state of the state vector using the initial measurement . In this project I used initial measurement from the simulator to initialize the filter  x,Y,yaw_angle with additional gaussian mean noise .
@@ -18,7 +19,7 @@ For real car situations this is just like initialization using the GPS measureme
 First we initialize the number of particles we need  for robust localization and define each initial state using the initial gpu location and gpus location noise .
 
 
-*   Predict
+## Predict
 
 
 In the predicted state we predict the particle's motion using a simple motion model . This prediction state predicts the particle motion based on the vehicle motion command . Then simply integrate the state transition information to all the particles . 
@@ -30,7 +31,7 @@ First stage updates the orientation angle with the given theta angle . After ori
 It’s important to make sure we are within 0-2*pi  limit for the yaw angle for that  i have used some if conditions .
 
 
-* Update
+## Update
 
 
 In the update step we mainly focus on the weight update assigned to each and every particle to distinguish whether that particle is relevant or not . Initially we assign that uniform likelihood for every particle but with measurement updates we adjust the weights. Update step consists of mainly  three steps :
@@ -49,6 +50,15 @@ In the update step we mainly focus on the weight update assigned to each and eve
 
 Step 01:
 As the car moves it takes measurements using sensors but all the sensor measurements are  in the vehicle coordinate system . For landmarker matching we need to transform from local to map coordinate frame . For that we use below equation 
+
+Step 02:
+After transforming into the map coordinate frame we need to measure the most likely landmark from the map using neighbour search . Now each particle has it’s more likely measurements from the map .
+
+
+
+Step 03:
+using multivariate gaussian we can measure the likelihood of the measurements for the particle . If the measurements and the likely landmarks  with low euclidean distance error then that particle is more likely to represent the object . Hence weight goes high . Below equation shows the weight updating equation :
+
 
 
 
