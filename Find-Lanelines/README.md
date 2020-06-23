@@ -10,32 +10,51 @@ When we drive, we use our eyes to decide where to go.  The lines on the road tha
 
 In this project you will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
 
-To complete the project, two files will be submitted: a file containing project code and a file containing a brief write up explaining your solution. We have included template files to be used both for the [code](https://github.com/udacity/CarND-LaneLines-P1/blob/master/P1.ipynb) and the [writeup](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md).The code file is called P1.ipynb and the writeup template is writeup_template.md 
-
-To meet specifications in the project, take a look at the requirements in the [project rubric](https://review.udacity.com/#!/rubrics/322/view)
 
 
-Creating a Great Writeup
----
-For this project, a great writeup should provide a detailed response to the "Reflection" section of the [project rubric](https://review.udacity.com/#!/rubrics/322/view). There are three parts to the reflection:
+The goals / steps of this project are the following:
+* Make a pipeline that finds lane lines on the road
 
-1. Describe the pipeline
+[//]: # (Image References)
 
-2. Identify any shortcomings
+[image1]: ./examples/grayscale.jpg "Grayscale"
 
-3. Suggest possible improvements
-
-We encourage using images in your writeup to demonstrate how your pipeline works.  
-
-All that said, please be concise!  We're not looking for you to write a book here: just a brief description.
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup. Here is a link to a [writeup template file](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md). 
-
-
-The Project
 ---
 
-## If you have already installed the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) you should be good to go!   If not, you should install the starter kit to get started on this project. ##
+### 1. My working  pipeline.
+
+My pipeline consisted of 6 steps.
+1. First images are converted into the gray scale image type
+2. Use Canny edge detector for detect edges of the gray scale image
+3. Define a feild of view for the lane lines and define a ROI for the image
+4. crop the edge output using above ROI
+5. Hough transform is used to refine the lane lines
+6. extrapolate the lane lines for continous line segment
+
+#### Jupyter notebook contain all the functions for above steps 
+
+If you'd like to include images to show how the pipeline works, here is how to include an image: 
+
+![alt text][image1]
+
+
+### 2. Identify potential shortcomings with  current pipeline
+
+
+* One potential shortcoming would be what would happen when the lane lines curavtuer having more deviation and hough transform is not capable of resulting the lane lines
+* Another shortcoming could be this algorithm is not robust on illumination changes
+* Major draw back on paramter tunning , because these paramters are not robust on real world scenarios
+
+
+### 3. Suggest possible improvements to  pipeline
+
+* A possible improvement would be to producing a parameter tunning pipline sperately
+* Another potential improvement could be to use camera calibaration , undistort images , use birdeye view for curvatuer detection , use different colour space
+
+## The Project startup
+---
+
+### If you have already installed the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) you should be good to go!   If not, you should install the starter kit to get started on this project. ##
 
 **Step 1:** Set up the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) if you haven't already.
 
@@ -49,8 +68,7 @@ Jupyter is an Ipython notebook where you can run blocks of code and see results 
 
 A browser window will appear showing the contents of the current directory.  Click on the file called "P1.ipynb".  Another browser window will appear displaying the notebook.  Follow the instructions in the notebook to complete the project.  
 
-**Step 3:** Complete the project and submit both the Ipython notebook and the project writeup
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+
+
 
