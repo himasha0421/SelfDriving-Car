@@ -39,6 +39,10 @@ If you'd like to include images to show how the pipeline works, here is how to i
 
 Here the results of line segmentation using hough transform :
 
+<img src="examples/line-segments-example.jpg" width="480" alt="Combined Image" />
+
+This is the final results using extraplotaing the line segments from above :
+
 <img src="examples/laneLines_thirdPass.jpg" width="480" alt="Combined Image" />
 
 ### 2. Identify potential shortcomings with  current pipeline
